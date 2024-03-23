@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Github\\xamarin\\walsh0715cosc295a2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\matchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\matchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\opponentspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\opponentspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 446,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MatchesPage.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
+              "ToolTip": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-23T19:18:30.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OpponentsPage.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "ToolTip": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAADgvyIAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-23T02:35:21.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
+              "ToolTip": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAADwvzYAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-23T02:35:21.562Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
