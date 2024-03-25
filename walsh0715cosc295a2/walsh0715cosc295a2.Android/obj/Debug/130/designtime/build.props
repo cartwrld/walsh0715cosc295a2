@@ -25,11 +25,11 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=638467365271065661
+_nugetassetstimestamp=638467973060076678
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
 androidmanifestplaceholders=
-projectfullpath=d:\github\xamarin\walsh0715cosc295a2\walsh0715cosc295a2\walsh0715cosc295a2.android\walsh0715cosc295a2.android.csproj
+projectfullpath=d:\github\walsh0715cosc295a2\walsh0715cosc295a2\walsh0715cosc295a2.android\walsh0715cosc295a2.android.csproj

@@ -3593,11 +3593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+      "projectUniqueName": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
       "projectName": "walsh0715cosc295a2.Android",
-      "projectPath": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+      "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
       "packagesPath": "C:\\Users\\xer0x\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
+      "outputPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -3618,8 +3618,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
-              "projectPath": "D:\\Github\\xamarin\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
+            "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
+              "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
             }
           }
         }

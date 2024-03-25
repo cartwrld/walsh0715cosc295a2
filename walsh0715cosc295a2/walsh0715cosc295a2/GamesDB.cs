@@ -14,11 +14,26 @@ namespace walsh0715cosc295a2
         {
             database = new SQLiteConnection(dbPath);
 
+            database.CreateTable<Game>();
+
+
             if (database.Table<Game>().Count() == 0)    // Table<> returns a collection we can do further operations on, like Count or Where
             {
                 // configure and save a new purchase
-                Game game = new Game { gameName = "Overwatch", description = "Hanamura", rating = 9.5 };
+                Game game = new Game { GameName = "Overwatch", Description = "Hanamura", Rating = 9.5 };
+                Game game2 = new Game { GameName = "Shadow Quest", Description = "Explore ancient ruins and battle dark creatures.", Rating = 8.7 };
+                Game game3 = new Game { GameName = "Mystic Lands", Description = "A world full of magic, mysteries, and adventures awaits.", Rating = 9.0 };
+                Game game4 = new Game { GameName = "Cyber Sprint", Description = "A fast-paced race through a dystopian future.", Rating = 8.3 };
+                Game game5 = new Game { GameName = "Galactic Battles", Description = "Lead your fleet to victory in epic space wars.", Rating = 9.2 };
+                Game game6 = new Game { GameName = "Fantasy Kingdoms", Description = "Build and rule your kingdom in a land of dragons and knights.", Rating = 8.5 };
+
+
                 SaveGame(game);
+                SaveGame(game2);
+                SaveGame(game3);
+                SaveGame(game4);
+                SaveGame(game5);
+                SaveGame(game6);
             }
         }
 
@@ -39,8 +54,9 @@ namespace walsh0715cosc295a2
         }
         public List<Game> GetGames()
         {
-            return database.Table<Game>().ToList<Game>();
+            return database.Table<Game>().ToList();
         }
+  
         public Game GetGame(int id)
         {
             return database.Table<Game>().Where(i => i.ID == id).FirstOrDefault();  // 

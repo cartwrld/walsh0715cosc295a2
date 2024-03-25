@@ -22,5 +22,13 @@ namespace walsh0715cosc295a2.Droid
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             return Path.Combine(path, filename);
         }
+        public void DeleteLocalFile(string filename)
+        {
+            var path = GetLocalFilePath(filename);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
     }
 }

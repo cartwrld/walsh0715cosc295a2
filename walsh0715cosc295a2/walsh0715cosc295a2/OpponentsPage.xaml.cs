@@ -5,9 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace walsh0715cosc295a2
 {
@@ -17,31 +19,73 @@ namespace walsh0715cosc295a2
         public OpponentsPage()
         {
             InitializeComponent();
-
-            List<Opponent> oppList = App.OppDatabase.GetOpponents();
-
             Title = "Opponents";
 
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary, // This can be Primary or Secondary. Secondary items might show in a menu.
+                Priority = 0 // The order in which it appears in the toolbar
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary, // This can be Primary or Secondary. Secondary items might show in a menu.
+                Priority = 0 // The order in which it appears in the toolbar
+            };
+
+            btnGames.Clicked += OnGamesClick;
+            btnSettings.Clicked += OnSettingsClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings); 
+
+
+            // opponent list
+            List<Opponent> oppList = App.OppDatabase.GetOpponents();
+
+            ObservableCollection<Opponent> ocOppList = new ObservableCollection<Opponent>(oppList);
+
+            // list view to hold the opponents
             ListView lvOpps = new ListView
             {
-                ItemsSource = oppList,
+                ItemsSource = ocOppList,
                 ItemTemplate = new DataTemplate(typeof(OpponentCell)),
                 RowHeight = 50
             };
 
+            // push new matches page when item is tapped in listview
             lvOpps.ItemTapped += (sender, e) =>
             {
                 lvOpps.SelectedItem = null;
                 Navigation.PushAsync(new MatchesPage((Opponent)e.Item));
             };
 
-            StackLayout stklayout = new StackLayout
+            // btn to add new opponent
+            Button newBtn = new Button { Text  = "Add New Opponent" };
+            newBtn.Clicked += (sender, e) =>
             {
-                Orientation = StackOrientation.Vertical,
-                Children = { lvOpps }
+                lvOpps.SelectedItem = null;
+                Navigation.PushAsync(new AddNewOppPage());
+            };
+
+            // stack layout to hold the listview
+            StackLayout stklayout = new StackLayout 
+            { 
+                Orientation = StackOrientation.Vertical, 
+                Children = { lvOpps, newBtn } 
             };
 
             Content = stklayout;
+        }
+        private void OnSettingsClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+        private void OnGamesClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GamesPage());
+
         }
     }
 
@@ -53,13 +97,14 @@ namespace walsh0715cosc295a2
             Label lblLast = new Label { FontSize = 20 };
             Label lblPhone = new Label { FontSize = 20, HorizontalOptions = LayoutOptions.End };
 
-            lblFirst.SetBinding(Label.TextProperty, "fname");
-            lblLast.SetBinding(Label.TextProperty, "lname");
-            lblPhone.SetBinding(Label.TextProperty, "phone");
+            lblFirst.SetBinding(Label.TextProperty, "FirstName");
+            lblLast.SetBinding(Label.TextProperty, "LastName");
+            lblPhone.SetBinding(Label.TextProperty, "Phone");
 
             StackLayout stkName = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
+                WidthRequest = 200,
                 Children = { lblFirst, lblLast }
             };
 
@@ -73,13 +118,25 @@ namespace walsh0715cosc295a2
             };
 
             MenuItem mi = new MenuItem { Text = "Delete", IsDestructive = true };
-            mi.Clicked += (sender, e) =>
+            mi.Clicked += async (sender, e) =>
             {
-                ListView lv = (ListView)this.Parent;
+                var menuItem = (MenuItem)sender;
+                var opponent = (Opponent)menuItem.BindingContext;
 
-                ((ObservableCollection<Opponent>)lv.ItemsSource).Remove(BindingContext as Opponent);
+                if (opponent != null)
+                {
+                    App.OppDatabase.DeleteOpponent(opponent);
 
+                    var lv = (ListView)this.Parent;
+
+                    if (lv != null)
+                    {
+                        List<Opponent> opponents = App.OppDatabase.GetOpponents();
+                        lv.ItemsSource = new ObservableCollection<Opponent>(opponents);
+                    }
+                }
             };
+
             ContextActions.Add(mi);
         }
     }

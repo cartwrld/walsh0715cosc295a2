@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using walsh0715cosc295a2.db;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -49,12 +50,18 @@ namespace walsh0715cosc295a2
         {
             InitializeComponent();
 
-            //List<Opponent> oppList = App.OppDatabase.GetOpponents();
-
+            //DeleteDatabases();
 
             MainPage = new NavigationPage(new OpponentsPage());
+            //MainPage = new NavigationPage(new GamesPage());
         }
 
+        private void DeleteDatabases()
+        {
+            DependencyService.Get<IFileHelper>().DeleteLocalFile("OpponentsSQLite.db3");
+            DependencyService.Get<IFileHelper>().DeleteLocalFile("MatchesSQLite.db3");
+            DependencyService.Get<IFileHelper>().DeleteLocalFile("GamesSQLite.db3");
+        }
         protected override void OnStart()
         {
         }
@@ -68,9 +75,13 @@ namespace walsh0715cosc295a2
         }
     }
 
+
+
     public interface IFileHelper
     {
         string GetLocalFilePath(string filename);
+        void DeleteLocalFile(string filename);
+
     }
 
 }

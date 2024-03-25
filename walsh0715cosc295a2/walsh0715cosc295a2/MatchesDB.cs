@@ -13,11 +13,27 @@ namespace walsh0715cosc295a2
         {
             database = new SQLiteConnection(dbPath);
 
+            database.CreateTable<Match>();
+
+
             if (database.Table<Match>().Count() == 0)    // Table<> returns a collection we can do further operations on, like Count or Where
             {
                 // configure and save a new purchase
-                Match match = new Match { oppID = 1, date = DateTime.Now, comments = "Good game friendo", gameID = 1, win = true};
+                Match match0 = new Match { OppID = 1, Date = DateTime.Now.AddDays(1), Comments = "EZ Clap", GameID = 14, Win = true };
+                Match match = new Match { OppID = 2, Date = DateTime.Now, Comments = "Good game friendo", GameID = 8, Win = true };
+                Match match2 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-1), Comments = "Tough competition!", GameID = 9, Win = false };
+                Match match3 = new Match { OppID = 3, Date = DateTime.Now.AddDays(-2), Comments = "Close call, but managed to win!", GameID = 10, Win = true };
+                Match match4 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-3), Comments = "Dominating victory!", GameID = 11, Win = true };
+                Match match5 = new Match { OppID = 2, Date = DateTime.Now.AddDays(-4), Comments = "Lost, but learned a lot.", GameID = 12, Win = false };
+                Match match6 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-5), Comments = "Had a great time, good game.", GameID = 13, Win = true };
+
+                SaveMatch(match0);
                 SaveMatch(match);
+                SaveMatch(match2);
+                SaveMatch(match3);
+                SaveMatch(match4);
+                SaveMatch(match5);
+                SaveMatch(match6);
             }
         }
 
@@ -38,11 +54,17 @@ namespace walsh0715cosc295a2
         }
         public List<Match> GetMatches()
         {
-            return database.Table<Match>().ToList<Match>();
+            return database.Table<Match>().ToList();
         }
         public Match GetMatch(int id)
         {
             return database.Table<Match>().Where(i => i.ID == id).FirstOrDefault();  // 
         }
+        public List<Match> GetMatchesByID(int id)
+        {
+            return database.Query<Match>("SELECT * FROM [Match] WHERE [OppID] = " + id);    // returns a regular list
+        }
+
+
     }
 }

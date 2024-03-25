@@ -9,11 +9,11 @@ namespace walsh0715cosc295a2
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public int oppID { get; set; }
-        public DateTime date { get; set; }
-        public string comments { get; set; }
-        public int gameID { get; set; }
-        public bool win { get; set; }
+        public int OppID { get; set; }
+        public DateTime Date { get; set; }
+        public string Comments { get; set; }
+        public int GameID { get; set; }
+        public bool Win { get; set; }
 
 
     }
