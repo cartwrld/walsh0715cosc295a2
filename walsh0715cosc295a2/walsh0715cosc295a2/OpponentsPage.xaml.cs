@@ -24,14 +24,13 @@ namespace walsh0715cosc295a2
             ToolbarItem btnSettings = new ToolbarItem
             {
                 Text = "Settings",
-                Order = ToolbarItemOrder.Primary, // This can be Primary or Secondary. Secondary items might show in a menu.
-                Priority = 0 // The order in which it appears in the toolbar
+                Order = ToolbarItemOrder.Primary, 
+                Priority = 0 
             };
             ToolbarItem btnGames = new ToolbarItem
             {
                 Text = "Games",
-                Order = ToolbarItemOrder.Primary, // This can be Primary or Secondary. Secondary items might show in a menu.
-                Priority = 0 // The order in which it appears in the toolbar
+                Order = ToolbarItemOrder.Primary, 
             };
 
             btnGames.Clicked += OnGamesClick;
@@ -62,7 +61,8 @@ namespace walsh0715cosc295a2
             };
 
             // btn to add new opponent
-            Button newBtn = new Button { Text  = "Add New Opponent" };
+            Button newBtn = new Button { Text = "Add New Opponent", Margin = 35, Padding = new Thickness(15, 0), HorizontalOptions = LayoutOptions.Center };
+
             newBtn.Clicked += (sender, e) =>
             {
                 lvOpps.SelectedItem = null;

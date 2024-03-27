@@ -21,20 +21,28 @@ namespace walsh0715cosc295a2
     public partial class MatchesPage : ContentPage
     {
         public Opponent currentOpp;
+        public string fullName;
+        public int counter;
 
         public MatchesPage(Opponent opp)
         {
             Title = "Matches";
 
+            fullName = opp.FirstName + " " + opp.LastName;
+
             currentOpp = App.OppDatabase.GetOpponent(opp.ID);
             
 
             List<Match> matches = App.MatchesDatabase.GetMatchesByID(opp.ID);
-            Game game = App.GamesDatabase.GetGame(opp.ID);
 
             ListView lvMatches = new ListView
             {
-                ItemsSource = matches,
+                ItemsSource = matches.Select(match => new
+                {
+                    Match = match,
+                    FullName = $"{opp.FirstName} {opp.LastName}",
+                    GameName = App.GamesDatabase.GetGame(match.GameID)?.GameName
+                }).ToList(),
                 ItemTemplate = new DataTemplate(typeof(MatchCell)),
                 RowHeight = MatchCell.RowHeight
             };
@@ -77,46 +85,53 @@ namespace walsh0715cosc295a2
     }
     public class MatchCell : ViewCell
     {
-        public const int RowHeight = 150;
+        public const int RowHeight = 110;
 
         public MatchCell()
         {
+
             
-            Label lblFirst = new Label { Text = "firstname" };
-            Label lblLast = new Label { Text = "lastname" };
-            Label lblDate = new Label { FontAttributes = FontAttributes.Italic };
-            Label lblGameType = new Label();
-            Label lblComments = new Label();
+            Label lblFullName = new Label { FontSize = 20 };
+            Label lblDate = new Label { FontSize = 18, FontAttributes = FontAttributes.Italic };
+            Label lblGameType = new Label { FontSize = 18 };
+            Label lblComments = new Label { FontSize = 16 };
+            Label lblWin = new Label { FontSize = 18, Text = "Win?" };
             Switch swWin = new Switch();
 
-            lblFirst.SetBinding(Label.TextProperty, "OpponentFirstName");
-            lblLast.SetBinding(Label.TextProperty, "OpponentLastName");
-            lblDate.SetBinding(Label.TextProperty, new Binding("Date", BindingMode.Default, new DateConverter()));
+            lblFullName.SetBinding(Label.TextProperty, "FullName");
+            lblDate.SetBinding(Label.TextProperty, new Binding("Match.Date", BindingMode.Default, new DateConverter()));
             lblGameType.SetBinding(Label.TextProperty, "GameName");
-            lblComments.SetBinding(Label.TextProperty, "Comments");
+            lblComments.SetBinding(Label.TextProperty, "Match.Comments");
             //swWin.SetBinding(Switch, true);
 
 
-            StackLayout stkName = new StackLayout
+            StackLayout stkWin = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Children = { lblFirst, lblLast }
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                Children = {lblWin, swWin }
             };
 
             StackLayout stkLeft = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { stkName, lblDate, lblGameType }
+                WidthRequest = 350,
+                Children = { lblFullName, lblDate, lblGameType }
             };
             StackLayout stkRight = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { lblComments, swWin }
+                VerticalOptions = LayoutOptions.End,
+                WidthRequest = 150,
+                Children = { lblComments, stkWin }
             };
 
             StackLayout stkBase = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(20,10,10,10),
                 Children = { stkLeft, stkRight }
             };
 

@@ -15,6 +15,5 @@ namespace walsh0715cosc295a2
         public int GameID { get; set; }
         public bool Win { get; set; }
 
-
     }
 }

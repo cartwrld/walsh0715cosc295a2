@@ -3,40 +3,48 @@
   "WorkspaceRootPath": "D:\\Github\\walsh0715cosc295a2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\settingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\settingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\gamespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\gamespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\addnewopppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\addnewopppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\matchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\matchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\gamespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\gamespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\matchesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\matchesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\opponentspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\opponentspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\gamesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\gamesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\settingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\settingspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\matchesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\matchesdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\opponentsdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\opponentsdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|d:\\github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84FE3C94-1378-478A-AE05-9D9E3E98AC87}|walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj|solutionrelative:walsh0715cosc295a2\\walsh0715cosc295a2\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,12 +53,29 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 414,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 465,
+          "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "AddNewOppPage.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\AddNewOppPage.xaml.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\AddNewOppPage.xaml.cs",
+              "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\AddNewOppPage.xaml.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\AddNewOppPage.xaml.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAgwCsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T22:52:58.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Game.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\Game.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\Game.cs",
@@ -62,31 +87,40 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\App.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-25T01:10:51.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "OpponentsPage.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAwwC0AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-23T20:33:05.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MatchesPage.xaml.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesPage.xaml.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAiwC0AAAAiAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAFEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-23T20:39:25.385Z",
               "EditorCaption": ""
@@ -94,12 +128,25 @@
           ]
         },
         {
-          "DockedWidth": 478,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 427,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
+              "Title": "Match.cs",
+              "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\Match.cs",
+              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\Match.cs",
+              "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\Match.cs",
+              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\Match.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T22:12:31.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "SettingsPage.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\SettingsPage.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\SettingsPage.cs",
@@ -112,67 +159,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "GamesPage.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\GamesPage.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\GamesPage.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\GamesPage.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\GamesPage.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAACQAAAApAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAgwDAAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-25T01:58:00.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "GamesDB.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\GamesDB.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\GamesDB.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\GamesDB.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\GamesDB.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAgwDoAAAACAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-23T23:40:23.581Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "OpponentsDB.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsDB.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsDB.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsDB.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsDB.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABEAAAAAAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-23T20:35:14.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "MatchesDB.cs",
               "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesDB.cs",
               "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesDB.cs",
               "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesDB.cs",
               "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\MatchesDB.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAA0AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-23T21:16:44.964Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OpponentsPage.xaml.cs",
-              "DocumentMoniker": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
-              "RelativeDocumentMoniker": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
-              "ToolTip": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
-              "RelativeToolTip": "walsh0715cosc295a2\\walsh0715cosc295a2\\OpponentsPage.xaml.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAwwFIAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-23T20:33:05.766Z",
               "EditorCaption": ""
             }
           ]

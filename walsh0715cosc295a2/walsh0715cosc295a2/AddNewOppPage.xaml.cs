@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -8,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static Xamarin.Essentials.Permissions;
+using ListView = Xamarin.Forms.ListView;
 
 namespace walsh0715cosc295a2
 {
@@ -31,7 +33,7 @@ namespace walsh0715cosc295a2
                 Root = { new TableSection("Add New Opponent") { ecFirst, ecLast, ecAddr, ecPhone, ecEmail } }
             };
 
-            Button btnSaveNew = new Button { Text = "Save New Opponent", Padding = new Thickness(15, 0), HorizontalOptions = LayoutOptions.Center };
+            Button btnSaveNew = new Button { Text = "Save New Opponent", Margin = 35, Padding = new Thickness(15, 0), HorizontalOptions = LayoutOptions.Center };
 
             btnSaveNew.Clicked += (s, e) =>
             {
@@ -54,6 +56,12 @@ namespace walsh0715cosc295a2
                     Email = oppValues[4]
                 };
                 App.OppDatabase.SaveOpponent(opp);
+
+                ((ObservableCollection<Opponent>)((ListView)this.Parent).ItemsSource).Add(opp as Opponent);
+
+                Navigation.PopAsync();
+
+
             };
 
             StackLayout stackLayout = new StackLayout
