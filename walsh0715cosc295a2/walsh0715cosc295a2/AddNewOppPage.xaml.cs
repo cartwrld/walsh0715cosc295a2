@@ -57,7 +57,7 @@ namespace walsh0715cosc295a2
                 };
                 App.OppDatabase.SaveOpponent(opp);
 
-                ((ObservableCollection<Opponent>)((ListView)this.Parent).ItemsSource).Add(opp as Opponent);
+                MessagingCenter.Send(this, "DatabaseUpdated");
 
                 Navigation.PopAsync();
 

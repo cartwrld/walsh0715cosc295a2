@@ -12,7 +12,13 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using Switch = Xamarin.Forms.Switch;
 using System.Globalization;
-
+using static Xamarin.Essentials.Permissions;
+using Xamarin.Essentials;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.PlatformConfiguration;
+using ListView = Xamarin.Forms.ListView;
+using DatePicker = Xamarin.Forms.DatePicker;
+using Picker = Xamarin.Forms.Picker;
 
 namespace walsh0715cosc295a2
 {
@@ -34,6 +40,13 @@ namespace walsh0715cosc295a2
             
 
             List<Match> matches = App.MatchesDatabase.GetMatchesByID(opp.ID);
+            List<Game> games = App.GamesDatabase.GetGames();
+            List<string> gameNames = new List<string>();
+
+            for (int i = 0; i < games.Count; i++)
+            {
+                gameNames.Add(games[i].GameName);
+            }
 
             ListView lvMatches = new ListView
             {
@@ -57,15 +70,40 @@ namespace walsh0715cosc295a2
             DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy" };
             ViewCell vcDate = new ViewCell { View = datePicker };
             EntryCell ecComment = new EntryCell { Label = "Comment:" };
-            EntryCell ecGame = new EntryCell { Label = "Game:" };
+            Picker pickerGame;
+            pickerGame = new Picker
+            {
+                Title = "Select a Fuel Purchase by ID",
+                ItemsSource = gameNames,
+                SelectedItem = null,
+            };
+            ViewCell vcGame = new ViewCell { View = pickerGame };
             SwitchCell scWin = new SwitchCell { Text = "Win?" };
 
             TableView tvAddMatch = new TableView { Intent = TableIntent.Form };
-            TableSection section = new TableSection("Add Match") { vcDate, ecComment, ecGame, scWin };
+            TableSection section = new TableSection("Add Match") { vcDate, ecComment, vcGame, scWin };
 
             tvAddMatch.Root = new TableRoot() { section };
 
+            
+
             Button saveBtn = new Button { Text = "Save" };
+            saveBtn.Clicked += (sender, e) =>
+            {
+                Match match = new Match
+                {
+                    OppID = opp.ID,
+                    Date = datePicker.Date,
+                    Comments = ecComment.Text,
+                    //GameID = pickerGame.SelectedItem
+                };
+            };
+
+            //int findGameID()
+            //{
+
+            //}
+
 
             StackLayout stkAddLayout = new StackLayout
             {

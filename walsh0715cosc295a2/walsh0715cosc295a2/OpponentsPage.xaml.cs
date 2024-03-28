@@ -76,6 +76,15 @@ namespace walsh0715cosc295a2
                 Children = { lvOpps, newBtn } 
             };
 
+            MessagingCenter.Subscribe<AddNewOppPage>(this, "DatabaseUpdated", (sender) => {
+                UpdateListView();
+            });
+
+            void UpdateListView()
+            {
+                lvOpps.ItemsSource = App.OppDatabase.GetOpponents(); // Update your ListView's ItemsSource
+            }
+
             Content = stklayout;
         }
         private void OnSettingsClick(object sender, EventArgs e)
@@ -87,6 +96,7 @@ namespace walsh0715cosc295a2
             Navigation.PushAsync(new GamesPage());
 
         }
+       
     }
 
     public class OpponentCell : ViewCell
@@ -95,7 +105,7 @@ namespace walsh0715cosc295a2
         { 
             Label lblFirst = new Label { FontSize = 20 };
             Label lblLast = new Label { FontSize = 20 };
-            Label lblPhone = new Label { FontSize = 20, HorizontalOptions = LayoutOptions.End };
+            Label lblPhone = new Label { FontSize = 20, HorizontalOptions = LayoutOptions.End, WidthRequest=130 };
 
             lblFirst.SetBinding(Label.TextProperty, "FirstName");
             lblLast.SetBinding(Label.TextProperty, "LastName");
