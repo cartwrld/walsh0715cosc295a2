@@ -53,7 +53,6 @@ namespace walsh0715cosc295a2
             //DeleteDatabases();
 
             MainPage = new NavigationPage(new OpponentsPage());
-            //MainPage = new NavigationPage(new GamesPage());
         }
 
         private void DeleteDatabases()

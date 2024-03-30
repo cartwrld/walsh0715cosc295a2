@@ -22,7 +22,7 @@ namespace walsh0715cosc295a2
                 Match match0 = new Match { OppID = 1, Date = DateTime.Now.AddDays(1), Comments = "EZ Clap", GameID = 1, Win = true };
                 Match match = new Match { OppID = 2, Date = DateTime.Now, Comments = "Good game friendo", GameID = 2, Win = true };
                 Match match2 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-1), Comments = "Tough competition!", GameID = 3, Win = false };
-                Match match3 = new Match { OppID = 3, Date = DateTime.Now.AddDays(-2), Comments = "Close call, but managed to win!", GameID = 4, Win = true };
+                Match match3 = new Match { OppID = 3, Date = DateTime.Now.AddDays(-2), Comments = "Close call, but managed to win!", GameID = 2, Win = true };
                 Match match4 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-3), Comments = "Dominating victory!", GameID = 1, Win = true };
                 Match match5 = new Match { OppID = 2, Date = DateTime.Now.AddDays(-4), Comments = "Lost, but learned a lot.", GameID = 1, Win = false };
                 Match match6 = new Match { OppID = 1, Date = DateTime.Now.AddDays(-5), Comments = "Had a great time, good game.", GameID = 5, Win = true };
@@ -35,6 +35,11 @@ namespace walsh0715cosc295a2
                 SaveMatch(match5);
                 SaveMatch(match6);
             }
+        }
+
+        public void ResetMatchesDB()
+        {
+            database.Query<Match>("DELETE FROM [Match]");
         }
 
         public int SaveMatch(Match match)
@@ -63,6 +68,11 @@ namespace walsh0715cosc295a2
         public List<Match> GetMatchesByID(int id)
         {
             return database.Query<Match>("SELECT * FROM [Match] WHERE [OppID] = " + id);    // returns a regular list
+        }
+
+        public int CountByGame(int gameID)
+        {
+            return database.ExecuteScalar<int>("SELECT COUNT(*) FROM [Match] WHERE [GameID] = ?",gameID); 
         }
 
 

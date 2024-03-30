@@ -37,6 +37,11 @@ namespace walsh0715cosc295a2.db
             }
         }
 
+        public void ResetOpponentsDB()
+        {
+            database.Query<Opponent>("DELETE FROM [Opponent]");
+        }
+
         public int SaveOpponent(Opponent opp)
         {
             if (opp.ID != 0)

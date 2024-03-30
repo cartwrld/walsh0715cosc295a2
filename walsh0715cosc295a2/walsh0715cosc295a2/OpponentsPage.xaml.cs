@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections;
 
+
 namespace walsh0715cosc295a2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,25 +20,8 @@ namespace walsh0715cosc295a2
         public OpponentsPage()
         {
             InitializeComponent();
-            Title = "Opponents";
 
-            ToolbarItem btnSettings = new ToolbarItem
-            {
-                Text = "Settings",
-                Order = ToolbarItemOrder.Primary, 
-                Priority = 0 
-            };
-            ToolbarItem btnGames = new ToolbarItem
-            {
-                Text = "Games",
-                Order = ToolbarItemOrder.Primary, 
-            };
-
-            btnGames.Clicked += OnGamesClick;
-            btnSettings.Clicked += OnSettingsClick;
-
-            ToolbarItems.Add(btnGames);
-            ToolbarItems.Add(btnSettings); 
+            setToolBar("Opponents");
 
 
             // opponent list
@@ -76,7 +60,10 @@ namespace walsh0715cosc295a2
                 Children = { lvOpps, newBtn } 
             };
 
-            MessagingCenter.Subscribe<AddNewOppPage>(this, "DatabaseUpdated", (sender) => {
+            MessagingCenter.Subscribe<AddNewOppPage>(this, "DBUpdated", (sender) => {
+                UpdateListView();
+            });
+            MessagingCenter.Subscribe<SettingsPage>(this, "DBReset", (sender) => {
                 UpdateListView();
             });
 
@@ -87,16 +74,35 @@ namespace walsh0715cosc295a2
 
             Content = stklayout;
         }
-        private void OnSettingsClick(object sender, EventArgs e)
+        public void setToolBar(string title)
+        {
+            Title = title;
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary,
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary,
+            };
+
+            btnGames.Clicked += OnGamesClick;
+            btnSettings.Clicked += OnSettingsClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings);
+        }
+        public void OnSettingsClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SettingsPage());
         }
-        private void OnGamesClick(object sender, EventArgs e)
+        public void OnGamesClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new GamesPage());
-
         }
-       
+
     }
 
     public class OpponentCell : ViewCell

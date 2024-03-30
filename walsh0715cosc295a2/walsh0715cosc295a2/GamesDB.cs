@@ -37,6 +37,11 @@ namespace walsh0715cosc295a2
             }
         }
 
+        public void ResetGamesDB()
+        {
+            database.Query<Game>("DELETE FROM [Game]");
+        }
+
         public int SaveGame(Game game)
         {
             if (game.ID != 0)

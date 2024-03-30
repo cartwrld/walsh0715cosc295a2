@@ -26,7 +26,6 @@ namespace walsh0715cosc295a2
             EntryCell ecPhone = new EntryCell { Label = "Phone:" };
             EntryCell ecEmail = new EntryCell { Label = "Email:" };
 
-
             TableView tvNewOpp = new TableView
             {
                 Intent = TableIntent.Form,
@@ -57,11 +56,9 @@ namespace walsh0715cosc295a2
                 };
                 App.OppDatabase.SaveOpponent(opp);
 
-                MessagingCenter.Send(this, "DatabaseUpdated");
+                MessagingCenter.Send(this, "DBUpdated");
 
                 Navigation.PopAsync();
-
-
             };
 
             StackLayout stackLayout = new StackLayout
@@ -71,6 +68,15 @@ namespace walsh0715cosc295a2
             };
 
             Content = stackLayout;
+        }
+
+        private void OnSettingsClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+        private void OnGamesClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GamesPage());
         }
     }
 }

@@ -19,6 +19,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using ListView = Xamarin.Forms.ListView;
 using DatePicker = Xamarin.Forms.DatePicker;
 using Picker = Xamarin.Forms.Picker;
+using System.Security.Cryptography.X509Certificates;
 
 namespace walsh0715cosc295a2
 {
@@ -32,7 +33,8 @@ namespace walsh0715cosc295a2
 
         public MatchesPage(Opponent opp)
         {
-            Title = "Matches";
+            setToolBar("Matches");
+
 
             fullName = opp.FirstName + " " + opp.LastName;
 
@@ -69,23 +71,37 @@ namespace walsh0715cosc295a2
 
             DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy" };
             ViewCell vcDate = new ViewCell { View = datePicker };
-            EntryCell ecComment = new EntryCell { Label = "Comment:" };
+            EntryCell ecComment = new EntryCell { Label = "Comment:",};
             Picker pickerGame;
+
+            Label lblGame = new Label 
+            { 
+                Text = "Game:", 
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = new Thickness(15,0, 18, 0)
+            };
             pickerGame = new Picker
             {
-                Title = "Select a Fuel Purchase by ID",
+                Title = "Select a game...",
                 ItemsSource = gameNames,
                 SelectedItem = null,
+                WidthRequest = 284,
+    
             };
-            ViewCell vcGame = new ViewCell { View = pickerGame };
-            SwitchCell scWin = new SwitchCell { Text = "Win?" };
+            StackLayout stkGame = new StackLayout 
+            { 
+                Orientation = StackOrientation.Horizontal,
+                VerticalOptions = LayoutOptions.Center,
+                
+                Children = { lblGame, pickerGame },
+            };
+            ViewCell vcGame = new ViewCell { View = stkGame};
+            SwitchCell scWin = new SwitchCell { Text = "Win?", Height = ecComment.Height };
 
-            TableView tvAddMatch = new TableView { Intent = TableIntent.Form };
+            TableView tvAddMatch = new TableView { Intent = TableIntent.Form};
             TableSection section = new TableSection("Add Match") { vcDate, ecComment, vcGame, scWin };
-
             tvAddMatch.Root = new TableRoot() { section };
-
-            
 
             Button saveBtn = new Button { Text = "Save" };
             saveBtn.Clicked += (sender, e) =>
@@ -99,15 +115,10 @@ namespace walsh0715cosc295a2
                 };
             };
 
-            //int findGameID()
-            //{
-
-            //}
-
-
             StackLayout stkAddLayout = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
+                Padding = 20,
                 Children = { tvAddMatch, saveBtn }
             };
 
@@ -119,6 +130,35 @@ namespace walsh0715cosc295a2
 
 
             Content = stackLayout;
+        }
+
+        public void setToolBar(string title)
+        {
+            Title = title;
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary,
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary,
+            };
+
+            btnGames.Clicked += OnGamesClick;
+            btnSettings.Clicked += OnSettingsClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings);
+        }
+        public void OnSettingsClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+        public void OnGamesClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GamesPage());
         }
     }
     public class MatchCell : ViewCell
@@ -140,7 +180,7 @@ namespace walsh0715cosc295a2
             lblDate.SetBinding(Label.TextProperty, new Binding("Match.Date", BindingMode.Default, new DateConverter()));
             lblGameType.SetBinding(Label.TextProperty, "GameName");
             lblComments.SetBinding(Label.TextProperty, "Match.Comments");
-            //swWin.SetBinding(Switch, true);
+            swWin.SetBinding(Switch.IsToggledProperty, "Match.Win");
 
 
             StackLayout stkWin = new StackLayout
@@ -148,7 +188,7 @@ namespace walsh0715cosc295a2
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center,
-                Children = {lblWin, swWin }
+                Children = { lblWin, swWin }
             };
 
             StackLayout stkLeft = new StackLayout

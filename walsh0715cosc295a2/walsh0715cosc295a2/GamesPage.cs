@@ -11,13 +11,17 @@ namespace walsh0715cosc295a2
     {
         public GamesPage()
         {
-            List<Game> gameList = App.GamesDatabase.GetGames();
+            List<Game> games = App.GamesDatabase.GetGames();
 
-            Title = "Games";
+            setToolBar("Games");
 
             ListView lvGames = new ListView
             {
-                ItemsSource = gameList,
+                ItemsSource = games.Select(game => new
+                {
+                    Game = game,
+                    MatchCount = App.MatchesDatabase.CountByGame(game.ID),
+                }).ToList(),
                 ItemTemplate = new DataTemplate(typeof(GameCell)),
                 RowHeight = GameCell.RowHeight,
             };
@@ -30,30 +34,57 @@ namespace walsh0715cosc295a2
 
             Content = stkLayout;
         }
+        public void setToolBar(string title)
+        {
+            Title = title;
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary,
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary,
+            };
+
+            btnGames.Clicked += OnGamesClick;
+            btnSettings.Clicked += OnSettingsClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings);
+        }
+        public void OnSettingsClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+        public void OnGamesClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GamesPage());
+        }
     }
 
     public class GameCell : ViewCell
     {
-        public static int RowHeight = 135;
+        public static int RowHeight = 130;
 
         public GameCell()
         {
             Label lblGameName = new Label { FontAttributes = FontAttributes.Bold, FontSize = 20};
             Label lblDescription = new Label { FontSize = 16 };
             Label lblMatches = new Label { Text = "# Matches:", FontSize = 16 };
-            Label lblMtCount = new Label { Text = "4", FontSize = 16 };
-            Label lblRating = new Label { Padding = new Thickness(0,20,0,0), FontSize = 26, HorizontalTextAlignment = TextAlignment.Center};
+            Label lblMatchCount = new Label { FontSize = 16 };
+            Label lblRating = new Label {  FontSize = 26, VerticalTextAlignment = TextAlignment.Center,HorizontalTextAlignment = TextAlignment.Center};
 
-            lblGameName.SetBinding(Label.TextProperty, "GameName");
-            lblDescription.SetBinding(Label.TextProperty, "Description");
-            //lblMatches.SetBinding(Label.TextProperty, "Matches");
-            //lblMtCount.SetBinding(Label.TextProperty, "MtCount");
-            lblRating.SetBinding(Label.TextProperty, "Rating");
+            lblGameName.SetBinding(Label.TextProperty, "Game.GameName");
+            lblDescription.SetBinding(Label.TextProperty, "Game.Description");
+            lblMatchCount.SetBinding(Label.TextProperty, "MatchCount");
+            lblRating.SetBinding(Label.TextProperty, "Game.Rating");
 
             StackLayout stkMatches = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Children = { lblMatches, lblMtCount }
+                Children = { lblMatches, lblMatchCount }
             };
 
             StackLayout stkLeft = new StackLayout
@@ -77,11 +108,13 @@ namespace walsh0715cosc295a2
             StackLayout stkBase = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Padding = new Thickness(30,15,30,30),
+                Padding = new Thickness(20,13,20,20),
                 Children = { stkLeft, stkRight }
             };
 
             View = stkBase;
         }
     }
+
+
 }
