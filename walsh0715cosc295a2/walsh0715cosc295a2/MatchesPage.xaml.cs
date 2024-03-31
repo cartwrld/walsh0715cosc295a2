@@ -1,25 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections;
 using Switch = Xamarin.Forms.Switch;
 using System.Globalization;
-using static Xamarin.Essentials.Permissions;
-using Xamarin.Essentials;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using Xamarin.Forms.PlatformConfiguration;
 using ListView = Xamarin.Forms.ListView;
 using DatePicker = Xamarin.Forms.DatePicker;
 using Picker = Xamarin.Forms.Picker;
-using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 namespace walsh0715cosc295a2
 {
@@ -27,53 +16,66 @@ namespace walsh0715cosc295a2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MatchesPage : ContentPage
     {
-        public Opponent currentOpp;
-        public string fullName;
-        public int counter;
-
+        public static string title = "Matches";
         public MatchesPage(Opponent opp)
         {
-            setToolBar("Matches");
+            // set toolbar
+            setToolBar("Opponents");
 
-
-            fullName = opp.FirstName + " " + opp.LastName;
-
-            currentOpp = App.OppDatabase.GetOpponent(opp.ID);
+            // get matches that contain the selected opponent ID
+            List<Match> matches = App.AppDB.GetMatchesByID(opp.ID);
             
+            // get list of games to retrieve game  names
+            List<string> gameNames = App.AppDB.GetGameNames();
 
-            List<Match> matches = App.MatchesDatabase.GetMatchesByID(opp.ID);
-            List<Game> games = App.GamesDatabase.GetGames();
-            List<string> gameNames = new List<string>();
-
-            for (int i = 0; i < games.Count; i++)
-            {
-                gameNames.Add(games[i].GameName);
-            }
-
+            // list view for the matches for the selected opponent
             ListView lvMatches = new ListView
             {
+                // creating custom object literal for opponent name and game name
                 ItemsSource = matches.Select(match => new
                 {
                     Match = match,
                     FullName = $"{opp.FirstName} {opp.LastName}",
-                    GameName = App.GamesDatabase.GetGame(match.GameID)?.GameName
+                    GameName = App.AppDB.GetGame(match.GameID)?.GameName
                 }).ToList(),
                 ItemTemplate = new DataTemplate(typeof(MatchCell)),
                 RowHeight = MatchCell.RowHeight
             };
 
+            // container for the matches
             StackLayout stkMatches = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
                 Children = { lvMatches },
-                HeightRequest = 1600
+                HeightRequest = 1400
             };
 
-            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy" };
-            ViewCell vcDate = new ViewCell { View = datePicker };
-            EntryCell ecComment = new EntryCell { Label = "Comment:",};
+
+
+            // ========== CELLS - ADD MATCH TABLE ==========
+
+            // game label
+            Label lblDate = new Label
+            {
+                Text = "Date:",
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = new Thickness(15, 0, 18, 0)
+            };
+            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 350 };
+            StackLayout stkDate = new StackLayout 
+            {
+                Orientation= StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 450,
+                Children = { datePicker },
+            }; 
+            ViewCell vcDate = new ViewCell { View = stkDate };
+
+            EntryCell ecComment = new EntryCell { Label = "Comment:"};
             Picker pickerGame;
 
+            // game label
             Label lblGame = new Label 
             { 
                 Text = "Game:", 
@@ -81,29 +83,45 @@ namespace walsh0715cosc295a2
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = new Thickness(15,0, 18, 0)
             };
+
+            // picker for the game name
             pickerGame = new Picker
             {
                 Title = "Select a game...",
                 ItemsSource = gameNames,
                 SelectedItem = null,
-                WidthRequest = 284,
-    
+                WidthRequest = 264,
             };
+
+            // HStack for the game label and picker 
             StackLayout stkGame = new StackLayout 
             { 
                 Orientation = StackOrientation.Horizontal,
                 VerticalOptions = LayoutOptions.Center,
-                
                 Children = { lblGame, pickerGame },
             };
-            ViewCell vcGame = new ViewCell { View = stkGame};
-            SwitchCell scWin = new SwitchCell { Text = "Win?", Height = ecComment.Height };
 
-            TableView tvAddMatch = new TableView { Intent = TableIntent.Form};
-            TableSection section = new TableSection("Add Match") { vcDate, ecComment, vcGame, scWin };
+            // viewcell that holds the game stack 
+            ViewCell vcGame = new ViewCell { View = stkGame};
+            SwitchCell scWin = new SwitchCell { Text = "Win?" };
+
+            // ========== SETUP - ADD MATCH TABLE ==========
+            TableView tvAddMatch = new TableView { Intent = TableIntent.Form };
+
+            TableSection section = new TableSection() { new CustomHeaderCell(), vcDate, ecComment, vcGame, scWin };
+           
             tvAddMatch.Root = new TableRoot() { section };
 
-            Button saveBtn = new Button { Text = "Save" };
+
+            // save button for saving new match
+            Button saveBtn = new Button
+            {
+                Text = "Add New Match",
+                HorizontalOptions = LayoutOptions.Center,
+                Margin = new Thickness(15, 7, 15,15),
+                Padding = new Thickness(15, 0),
+                BackgroundColor = Color.Accent
+            };
             saveBtn.Clicked += (sender, e) =>
             {
                 Match match = new Match
@@ -111,14 +129,14 @@ namespace walsh0715cosc295a2
                     OppID = opp.ID,
                     Date = datePicker.Date,
                     Comments = ecComment.Text,
-                    //GameID = pickerGame.SelectedItem
+                    GameID = App.AppDB.GetGameIDByName(pickerGame.SelectedItem.ToString()),
                 };
             };
 
             StackLayout stkAddLayout = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Padding = 20,
+ 
                 Children = { tvAddMatch, saveBtn }
             };
 
@@ -128,13 +146,12 @@ namespace walsh0715cosc295a2
                 Children = { stkMatches, stkAddLayout } 
             };
 
-
             Content = stackLayout;
         }
 
-        public void setToolBar(string title)
+        public void setToolBar(string prev)
         {
-            Title = title;
+            Title = prev;
             ToolbarItem btnSettings = new ToolbarItem
             {
                 Text = "Settings",
@@ -158,22 +175,48 @@ namespace walsh0715cosc295a2
         }
         public void OnGamesClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GamesPage());
+            Navigation.PushAsync(new GamesPage(title));
         }
     }
+
+    public class CustomHeaderCell : ViewCell
+    {
+        public CustomHeaderCell()
+        {
+            Height = 30;
+            View = new StackLayout
+            {
+                BackgroundColor = Color.Accent,
+                HeightRequest = 30,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                Children =
+                {
+                    new Label
+                    {
+                        Text = "Add Match",
+                        FontSize = 16,
+                        Padding = new Thickness(15, 0),
+                        WidthRequest=800,
+                        TextColor = Color.GhostWhite,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                    }
+                }
+            };
+        }
+    }
+
     public class MatchCell : ViewCell
     {
-        public const int RowHeight = 110;
-
+        public const int RowHeight = 108;
         public MatchCell()
-        {
-
-            
+        { 
             Label lblFullName = new Label { FontSize = 20 };
-            Label lblDate = new Label { FontSize = 18, FontAttributes = FontAttributes.Italic };
-            Label lblGameType = new Label { FontSize = 18 };
-            Label lblComments = new Label { FontSize = 16 };
-            Label lblWin = new Label { FontSize = 18, Text = "Win?" };
+            Label lblDate = new Label { FontSize = 17, FontAttributes = FontAttributes.Italic };
+            Label lblGameType = new Label { FontSize = 17 };
+            Label lblComments = new Label { FontSize = 15 };
+            Label lblWin = new Label { FontSize = 17, Text = "Win?" };
             Switch swWin = new Switch();
 
             lblFullName.SetBinding(Label.TextProperty, "FullName");
@@ -214,6 +257,28 @@ namespace walsh0715cosc295a2
             };
 
             View = stkBase;
+
+            MenuItem mi = new MenuItem { Text = "Delete", IsDestructive = true };
+            mi.Clicked += async (sender, e) =>
+            {
+                MenuItem menuItem = (MenuItem)sender;
+                Match match = (Match)menuItem.BindingContext;
+
+                if (match != null)
+                {
+                    App.AppDB.DeleteMatch(match);
+
+                    ListView lv = (ListView)this.Parent;
+
+                    if (lv != null)
+                    {
+                        List<Match> matches = App.AppDB.GetMatches();
+                        lv.ItemsSource = new List<Match>(matches);
+                    }
+                }
+            };
+
+            ContextActions.Add(mi);
         }
     }
 

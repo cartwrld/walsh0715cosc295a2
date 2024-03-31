@@ -8,58 +8,43 @@ namespace walsh0715cosc295a2
 {
     public partial class App : Application
     {
-        static OpponentsDB oppDB;
-        static MatchesDB matchDB;
-        static GamesDB gameDB;
+        static AppDB appDB;
 
-        public static OpponentsDB OppDatabase     // this is helpful in other pages, as App.Database is now available in other pages.
+        public static AppDB AppDB
         {
             get
             {
-                if (oppDB == null)   // check if database is already connected
+                if (appDB == null)   // check if database is already connected
                 {
-                    oppDB = new OpponentsDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("OpponentsSQLite.db3"));
+                    appDB = new AppDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("AppSQLite.db3"));
                 }
-                return oppDB;
+                return appDB;
             }
         }
-        public static MatchesDB MatchesDatabase
-        {
-            get
-            {
-                if (matchDB == null)   // check if database is already connected
-                {
-                    matchDB = new MatchesDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("MatchesSQLite.db3"));
-                }
-                return matchDB;
-            }
-        }
-        public static GamesDB GamesDatabase
-        {
-            get
-            {
-                if (gameDB == null)   // check if database is already connected
-                {
-                    gameDB = new GamesDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("GamesSQLite.db3"));
-                }
-                return gameDB;
-            }
-        }
-
+        
         public App()
         {
             InitializeComponent();
 
             //DeleteDatabases();
+            NavigationPage page = new NavigationPage(new OpponentsPage());
+            //page.BarBackgroundColor = Color.SlateGray;
 
-            MainPage = new NavigationPage(new OpponentsPage());
+            MainPage = page;
         }
+
+        public static void DeselectItem(ListView lv)
+        {
+            lv.ItemTapped += (sender, e) =>
+            {
+                ((ListView)sender).SelectedItem = null;
+            };
+        }
+
 
         private void DeleteDatabases()
         {
-            DependencyService.Get<IFileHelper>().DeleteLocalFile("OpponentsSQLite.db3");
-            DependencyService.Get<IFileHelper>().DeleteLocalFile("MatchesSQLite.db3");
-            DependencyService.Get<IFileHelper>().DeleteLocalFile("GamesSQLite.db3");
+            DependencyService.Get<IFileHelper>().DeleteLocalFile("AppSQLite.db3");
         }
         protected override void OnStart()
         {

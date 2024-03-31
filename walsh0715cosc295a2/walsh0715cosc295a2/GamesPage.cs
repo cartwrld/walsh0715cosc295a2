@@ -9,21 +9,27 @@ namespace walsh0715cosc295a2
 {
     public class GamesPage : ContentPage
     {
-        public GamesPage()
+        public static string title = "Games";
+        public GamesPage(string prev)
         {
-            List<Game> games = App.GamesDatabase.GetGames();
+            List<Game> games = App.AppDB.GetGames();
 
-            setToolBar("Games");
+            setToolBar(prev);
 
             ListView lvGames = new ListView
             {
                 ItemsSource = games.Select(game => new
                 {
                     Game = game,
-                    MatchCount = App.MatchesDatabase.CountByGame(game.ID),
+                    MatchCount = App.AppDB.CountByGame(game.ID),
                 }).ToList(),
                 ItemTemplate = new DataTemplate(typeof(GameCell)),
                 RowHeight = GameCell.RowHeight,
+            };
+
+            lvGames.ItemTapped += (sender, e) =>
+            {
+                ((ListView)sender).SelectedItem = null;
             };
 
             StackLayout stkLayout = new StackLayout
@@ -34,9 +40,9 @@ namespace walsh0715cosc295a2
 
             Content = stkLayout;
         }
-        public void setToolBar(string title)
+        public void setToolBar(string p)
         {
-            Title = title;
+            Title = p;
             ToolbarItem btnSettings = new ToolbarItem
             {
                 Text = "Settings",
@@ -46,9 +52,9 @@ namespace walsh0715cosc295a2
             {
                 Text = "Games",
                 Order = ToolbarItemOrder.Primary,
+                IsEnabled = false,
             };
 
-            btnGames.Clicked += OnGamesClick;
             btnSettings.Clicked += OnSettingsClick;
 
             ToolbarItems.Add(btnGames);
@@ -58,10 +64,7 @@ namespace walsh0715cosc295a2
         {
             Navigation.PushAsync(new SettingsPage());
         }
-        public void OnGamesClick(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new GamesPage());
-        }
+
     }
 
     public class GameCell : ViewCell
@@ -92,7 +95,7 @@ namespace walsh0715cosc295a2
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 300,
+                WidthRequest = 290,
                 Children = { lblGameName, lblDescription, stkMatches }
             };
             StackLayout stkRight = new StackLayout
@@ -100,7 +103,7 @@ namespace walsh0715cosc295a2
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 50,
+                WidthRequest = 60,
                 Children = { lblRating }
 
             };

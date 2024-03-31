@@ -9,21 +9,22 @@ namespace walsh0715cosc295a2
 {
     public class SettingsPage : ContentPage
     {
+        public static string title = "Settings";
+
         public SettingsPage()
         {
-            
+            setToolBar();
+
             Label lblTitle = new Label { Text = "Reset Game Data" };
             Button btnReset = new Button { Text = "Reset" };
 
             btnReset.Clicked += (sender, e) =>
             {
-                App.OppDatabase.ResetOpponentsDB();
-                App.MatchesDatabase.ResetMatchesDB();
-                App.GamesDatabase.ResetGamesDB();
+                App.AppDB.ResetDB();
 
                 MessagingCenter.Send(this, "DBReset");
 
-                Navigation.PopAsync();
+                Navigation.PopToRootAsync();
             };
 
             StackLayout stkBase = new StackLayout
@@ -36,6 +37,31 @@ namespace walsh0715cosc295a2
             };
 
             Content = stkBase;
+        }
+        public void setToolBar()
+        {
+            Title = title;
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary,
+                IsEnabled = false,
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary,
+            };
+
+            btnGames.Clicked += OnGamesClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings);
+        }
+   
+        public void OnGamesClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GamesPage(title));
         }
     }
 }

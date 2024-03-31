@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-using static Xamarin.Essentials.Permissions;
-using ListView = Xamarin.Forms.ListView;
 
 namespace walsh0715cosc295a2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddNewOppPage : ContentPage
     {
+        public static string title = "Add Opponent";
         public AddNewOppPage()
         {
             InitializeComponent();
+
+            setToolBar();
 
             EntryCell ecFirst = new EntryCell { Label = "First :" };
             EntryCell ecLast = new EntryCell { Label = "Last :" };
@@ -54,7 +48,7 @@ namespace walsh0715cosc295a2
                     Phone = oppValues[3],
                     Email = oppValues[4]
                 };
-                App.OppDatabase.SaveOpponent(opp);
+                App.AppDB.SaveOpponent(opp);
 
                 MessagingCenter.Send(this, "DBUpdated");
 
@@ -70,13 +64,34 @@ namespace walsh0715cosc295a2
             Content = stackLayout;
         }
 
-        private void OnSettingsClick(object sender, EventArgs e)
+        public void setToolBar()
+        {
+            Title = "Opponents";
+
+            ToolbarItem btnSettings = new ToolbarItem
+            {
+                Text = "Settings",
+                Order = ToolbarItemOrder.Primary,
+            };
+            ToolbarItem btnGames = new ToolbarItem
+            {
+                Text = "Games",
+                Order = ToolbarItemOrder.Primary,
+            };
+
+            btnGames.Clicked += OnGamesClick;
+            btnSettings.Clicked += OnSettingsClick;
+
+            ToolbarItems.Add(btnGames);
+            ToolbarItems.Add(btnSettings);
+        }
+        public void OnSettingsClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SettingsPage());
         }
-        private void OnGamesClick(object sender, EventArgs e)
+        public void OnGamesClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GamesPage());
+            Navigation.PushAsync(new GamesPage(title));
         }
     }
 }
