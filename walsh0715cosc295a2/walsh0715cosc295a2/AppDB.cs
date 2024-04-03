@@ -45,6 +45,11 @@ namespace walsh0715cosc295a2.db
         {
             return database.Delete(opp);
         }
+        public Opponent GetOpponent(int id)
+        {
+            return database.Query<Opponent>("SELECT * FROM [Opponent] WHERE [ID] = " + id).ElementAt(0);
+
+        }
         public string GetOpponentName(int id)
         {
             Opponent o = (database.Query<Opponent>("SELECT * FROM [Opponent] WHERE [ID] = " + id)).ElementAt(0);

@@ -26,7 +26,14 @@ namespace walsh0715cosc295a2
                 Root = { new TableSection("Add New Opponent") { ecFirst, ecLast, ecAddr, ecPhone, ecEmail } }
             };
 
-            Button btnSaveNew = new Button { Text = "Save New Opponent", Margin = 35, Padding = new Thickness(15, 0), HorizontalOptions = LayoutOptions.Center };
+            Button btnSaveNew = new Button {
+                Text = "Save New Opponent", 
+                Margin = 35, 
+                Padding = new Thickness(15, 0),
+                HorizontalOptions = LayoutOptions.Center,
+                TextColor = Color.White,
+                FontAttributes = FontAttributes.Bold,
+            };
 
             btnSaveNew.Clicked += (s, e) =>
             {

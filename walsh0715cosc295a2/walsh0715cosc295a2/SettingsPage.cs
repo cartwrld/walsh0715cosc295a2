@@ -16,7 +16,11 @@ namespace walsh0715cosc295a2
             setToolBar();
 
             Label lblTitle = new Label { Text = "Reset Game Data" };
-            Button btnReset = new Button { Text = "Reset" };
+            Button btnReset = new Button { Text = "Reset",
+                TextColor = Color.White,
+                FontAttributes = FontAttributes.Bold,
+                BackgroundColor = Color.Accent,
+            };
 
             btnReset.Clicked += (sender, e) =>
             {

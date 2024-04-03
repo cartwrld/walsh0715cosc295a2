@@ -41,7 +41,9 @@ namespace walsh0715cosc295a2
                 HorizontalOptions = LayoutOptions.Center,
                 Margin = 35, 
                 Padding = new Thickness(15, 0), 
-                BackgroundColor = Color.Accent
+                BackgroundColor = Color.Accent,
+                TextColor = Color.White,
+                FontAttributes = FontAttributes.Bold,
             };
 
             newBtn.Clicked += (sender, e) =>

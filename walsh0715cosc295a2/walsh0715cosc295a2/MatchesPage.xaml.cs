@@ -95,7 +95,7 @@ namespace walsh0715cosc295a2
             }; 
             ViewCell vcDate = new ViewCell { View = stkDate };
 
-            EntryCell ecComment = new EntryCell { Label = "Comment:"};
+            EntryCell ecComment = new EntryCell { Label = "Comment:" };
             Picker pickerGame;
 
             // game label
@@ -143,7 +143,9 @@ namespace walsh0715cosc295a2
                 HorizontalOptions = LayoutOptions.Center,
                 Margin = new Thickness(15, 7, 15,15),
                 Padding = new Thickness(15, 0),
-                BackgroundColor = Color.Accent
+                BackgroundColor = Color.Accent,
+                TextColor = Color.White,
+                FontAttributes = FontAttributes.Bold,
             };
             saveBtn.Clicked += (sender, e) =>
             {
@@ -303,8 +305,8 @@ namespace walsh0715cosc295a2
 
                     if (lv != null)
                     {
-                        Opponent currentOpp = App.AppDB.GetOpponent();
-                        List<Match> matches = App.AppDB.GetMatchesByID();
+                        
+                        List<Match> matches = App.AppDB.GetMatchesByID(m.OppID);
                         lv.ItemsSource = matches.Select(match => new MatchItem
                         {
                             m = match,
