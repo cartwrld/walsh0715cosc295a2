@@ -82,20 +82,22 @@ namespace walsh0715cosc295a2
             {
                 Text = "Date:",
                 VerticalTextAlignment = TextAlignment.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = new Thickness(15, 0, 18, 0)
+                HorizontalTextAlignment = TextAlignment.Start,
+                Padding = new Thickness(15, 0, 27, 0)
             };
-            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 350, TextColor = Color.Black};
-            StackLayout stkDate = new StackLayout 
+            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 303, TextColor = Color.Black};
+            StackLayout stkDate = new StackLayout
             {
+                //Padding = new Thickness(40, 0, 0, 0),
                 Orientation= StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.Center,
-                WidthRequest = 450,
-                Children = { datePicker },
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
+               
+                Children = {lblDate, datePicker },
             }; 
             ViewCell vcDate = new ViewCell { View = stkDate };
 
-            EntryCell ecComment = new EntryCell { Label = "Comment:" };
+            EntryCell ecComment = new EntryCell { Label = "Comment:"};
             Picker pickerGame;
 
             // game label
@@ -104,7 +106,7 @@ namespace walsh0715cosc295a2
                 Text = "Game:", 
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
-                Padding = new Thickness(15,0, 18, 0)
+                Padding = new Thickness(15,0, 20, 0)
             };
 
             // picker for the game name
@@ -113,7 +115,7 @@ namespace walsh0715cosc295a2
                 Title = "Select a game...",
                 ItemsSource = gameNames,
                 SelectedItem = null,
-                WidthRequest = 264,
+                WidthRequest = 303,
             };
 
             // HStack for the game label and picker 
@@ -125,7 +127,7 @@ namespace walsh0715cosc295a2
             };
 
             // viewcell that holds the game stack 
-            ViewCell vcGame = new ViewCell { View = stkGame};
+            ViewCell vcGame = new ViewCell { View = stkGame };
             SwitchCell scWin = new SwitchCell { Text = "Win?" };
 
             // ========== SETUP - ADD MATCH TABLE ==========
@@ -155,7 +157,17 @@ namespace walsh0715cosc295a2
                     Date = datePicker.Date,
                     Comments = ecComment.Text,
                     GameID = App.AppDB.GetGameIDByName(pickerGame.SelectedItem.ToString()),
+                    Win = scWin.On
                 };
+                App.AppDB.SaveMatch(match);
+                matches = App.AppDB.GetMatchesByID(match.OppID);
+                lvMatches.ItemsSource = handleMatchItems(matches, opp);
+
+                datePicker.Date = DateTime.Now;
+                ecComment.Text = "";
+                pickerGame.SelectedIndex = -1;
+                scWin.On = false;
+
             };
 
             StackLayout stkAddLayout = new StackLayout

@@ -28,14 +28,14 @@
 <!--	</style>	-->
 
 	<!-- Custom action bar styles -->
-	<style name="MyActionBarStyle" parent="@style/Widget.AppCompat.ActionBar.Solid">
-		<item name="background">@color/colorPrimary</item>
-		<item name="titleTextStyle">@style/MyActionBarTitleText</item>
-	</style>
+<!--	<style name="MyActionBarStyle" parent="@style/Widget.AppCompat.ActionBar.Solid"> -->
+<!--		<item name="background">@color/colorPrimary</item> -->
+<!--		<item name="titleTextStyle">@style/MyActionBarTitleText</item> -->
+<!--	</style> -->
 
 	<!-- Custom title text style -->
-<style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-	<item name="android:textColor">#FFFFFF</item>
-	White text color
-</style>
+<!-- <style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"> -->
+<!-- 	<item name="android:textColor">#FFFFFF</item> -->
+<!-- 	White text color -->
+<!-- </style> -->
 </resources>
