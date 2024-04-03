@@ -85,7 +85,7 @@ namespace walsh0715cosc295a2
                 HorizontalTextAlignment = TextAlignment.Start,
                 Padding = new Thickness(15, 0, 27, 0)
             };
-            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 303, TextColor = Color.Black};
+            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM d, yyyy", WidthRequest = 303, TextColor = Color.Black};
             StackLayout stkDate = new StackLayout
             {
                 //Padding = new Thickness(40, 0, 0, 0),
@@ -341,7 +341,7 @@ namespace walsh0715cosc295a2
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             DateTime date = (DateTime)value;
-            return date.ToString("dddd, MMMM dd, yyyy");
+            return date.ToString("dddd, MMMM d, yyyy");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
