@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj": {}
+    "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj": {}
   },
   "projects": {
-    "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj": {
+    "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+        "projectUniqueName": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
         "projectName": "walsh0715cosc295a2.Android",
-        "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
-        "packagesPath": "C:\\Users\\xer0x\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
+        "projectPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+        "packagesPath": "C:\\Users\\walsh0715\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xer0x\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\walsh0715\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,16 +32,11 @@
         "frameworks": {
           "monoandroid13.0": {
             "projectReferences": {
-              "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
-                "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
+              "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
+                "projectPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
               }
             }
           }
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -63,20 +58,20 @@
         }
       }
     },
-    "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
+    "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj",
+        "projectUniqueName": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj",
         "projectName": "walsh0715cosc295a2",
-        "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj",
-        "packagesPath": "C:\\Users\\xer0x\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\obj\\",
+        "projectPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj",
+        "packagesPath": "C:\\Users\\walsh0715\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\xer0x\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\walsh0715\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,11 +93,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -139,7 +129,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

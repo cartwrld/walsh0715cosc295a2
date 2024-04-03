@@ -3587,24 +3587,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xer0x\\.nuget\\packages\\": {},
+    "C:\\Users\\walsh0715\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+      "projectUniqueName": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
       "projectName": "walsh0715cosc295a2.Android",
-      "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
-      "packagesPath": "C:\\Users\\xer0x\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
+      "projectPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\walsh0715cosc295a2.Android.csproj",
+      "packagesPath": "C:\\Users\\walsh0715\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\xer0x\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\walsh0715\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3618,16 +3618,11 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
-              "projectPath": "D:\\Github\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
+            "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj": {
+              "projectPath": "D:\\GitHub\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2\\walsh0715cosc295a2.csproj"
             }
           }
         }
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {

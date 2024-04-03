@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Security;
+using static walsh0715cosc295a2.MatchesPage;
 
 namespace walsh0715cosc295a2
 {
@@ -21,7 +22,25 @@ namespace walsh0715cosc295a2
     {
         public static string title = "Matches";
 
-        public static object ;
+        public class MatchItem
+        {
+            public Match m { get; set; }
+            public string gn { get; set; }
+            public string fn { get; set; }
+        }
+
+        public List<MatchItem> handleMatchItems(List<Match> matches, Opponent opp)
+        {
+            List<MatchItem> matchItems =
+            matches.Select(match => new MatchItem
+            {
+                m = match,
+                fn = $"{opp.FirstName} {opp.LastName}",
+                gn = App.AppDB.GetGame(match.GameID)?.GameName
+            }).ToList();
+
+            return matchItems;
+        }
 
         public MatchesPage(Opponent opp)
         {
@@ -30,6 +49,9 @@ namespace walsh0715cosc295a2
 
             // get matches that contain the selected opponent ID
             List<Match> matches = App.AppDB.GetMatchesByID(opp.ID);
+
+            List<MatchItem> matchItems = handleMatchItems(matches, opp);
+
             
             // get list of games to retrieve game  names
             List<string> gameNames = App.AppDB.GetGameNames();
@@ -38,12 +60,7 @@ namespace walsh0715cosc295a2
             ListView lvMatches = new ListView
             {
                 // creating custom object literal for opponent name and game name
-                ItemsSource = matches.Select(match => new
-                {
-                    Match = match,
-                    FullName = $"{opp.FirstName} {opp.LastName}",
-                    GameName = App.AppDB.GetGame(match.GameID)?.GameName
-                }).ToList(),
+                ItemsSource = matchItems,
                 ItemTemplate = new DataTemplate(typeof(MatchCell)),
                 RowHeight = MatchCell.RowHeight
             };
@@ -53,7 +70,7 @@ namespace walsh0715cosc295a2
             {
                 Orientation = StackOrientation.Vertical,
                 Children = { lvMatches },
-                HeightRequest = 1400
+                HeightRequest = 1385
             };
 
 
@@ -68,7 +85,7 @@ namespace walsh0715cosc295a2
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = new Thickness(15, 0, 18, 0)
             };
-            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 350 };
+            DatePicker datePicker = new DatePicker { Format = "dddd, MMMM dd, yyyy", WidthRequest = 350, TextColor = Color.Black};
             StackLayout stkDate = new StackLayout 
             {
                 Orientation= StackOrientation.Horizontal,
@@ -114,7 +131,7 @@ namespace walsh0715cosc295a2
             // ========== SETUP - ADD MATCH TABLE ==========
             TableView tvAddMatch = new TableView { Intent = TableIntent.Form };
 
-            TableSection section = new TableSection() { new CustomHeaderCell(), vcDate, ecComment, vcGame, scWin };
+            TableSection section = new TableSection() { new TableHeaderCell(), vcDate, ecComment, vcGame, scWin };
            
             tvAddMatch.Root = new TableRoot() { section };
 
@@ -185,9 +202,9 @@ namespace walsh0715cosc295a2
         }
     }
 
-    public class CustomHeaderCell : ViewCell
+    public class TableHeaderCell : ViewCell
     {
-        public CustomHeaderCell()
+        public TableHeaderCell()
         {
             Height = 30;
             View = new StackLayout
@@ -201,8 +218,8 @@ namespace walsh0715cosc295a2
                     new Label
                     {
                         Text = "Add Match",
-                        FontSize = 16,
-                        Padding = new Thickness(15, 0),
+                        FontSize = 18,
+                        Padding = new Thickness(15, 3, 15, 0),
                         WidthRequest=800,
                         TextColor = Color.GhostWhite,
                         FontAttributes = FontAttributes.Bold,
@@ -220,17 +237,17 @@ namespace walsh0715cosc295a2
         public MatchCell()
         { 
             Label lblFullName = new Label { FontSize = 20 };
-            Label lblDate = new Label { FontSize = 17, FontAttributes = FontAttributes.Italic };
+            Label lblDate = new Label { FontSize = 17, FontAttributes = FontAttributes.Italic};
             Label lblGameType = new Label { FontSize = 17 };
             Label lblComments = new Label { FontSize = 15, HorizontalTextAlignment = TextAlignment.End};
             Label lblWin = new Label { FontSize = 17, Text = "Win?" };
             Switch swWin = new Switch();
 
-            lblFullName.SetBinding(Label.TextProperty, "FullName");
-            lblDate.SetBinding(Label.TextProperty, new Binding("Match.Date", BindingMode.Default, new DateConverter()));
-            lblGameType.SetBinding(Label.TextProperty, "GameName");
-            lblComments.SetBinding(Label.TextProperty, "Match.Comments");
-            swWin.SetBinding(Switch.IsToggledProperty, "Match.Win");
+            lblFullName.SetBinding(Label.TextProperty, "fn");
+            lblDate.SetBinding(Label.TextProperty, new Binding("m.Date", BindingMode.Default, new DateConverter()));
+            lblGameType.SetBinding(Label.TextProperty, "gn");
+            lblComments.SetBinding(Label.TextProperty, "m.Comments");
+            swWin.SetBinding(Switch.IsToggledProperty, "m.Win");
 
 
             StackLayout stkWin = new StackLayout
@@ -272,39 +289,38 @@ namespace walsh0715cosc295a2
                 Debug.WriteLine("after click");
 
                 var menuItem = (MenuItem)sender;
-                var match = menuItem.BindingContext;
+                var matchItem = (MatchItem)menuItem.BindingContext;
 
-                Debug.WriteLine($"{match.Match.ToString()}");
-
-                Match m = match as Match;
-
-                if (match != null)
+                if (matchItem != null)
                 {
+                    Match m = matchItem.m;
+
+                    Console.WriteLine(m);
+
                     App.AppDB.DeleteMatch(m);
 
                     ListView lv = (ListView)this.Parent;
 
                     if (lv != null)
                     {
-                        List<Match> matches = App.AppDB.GetMatches();
-                        lv.ItemsSource = new ObservableCollection<Match>(matches);
+                        Opponent currentOpp = App.AppDB.GetOpponent();
+                        List<Match> matches = App.AppDB.GetMatchesByID();
+                        lv.ItemsSource = matches.Select(match => new MatchItem
+                        {
+                            m = match,
+                            fn = $"{App.AppDB.GetOpponentName(match.OppID)}",
+                            gn = App.AppDB.GetGame(match.GameID)?.GameName
+                        }).ToList(); ;
                     }
                 }
             };
 
             ContextActions.Add(mi);
         }
+       
     }
     
-    public class MCTemplate
-    {
-        //private Match m;
-        //private string gn;
-        //private string fn;
-        
-        public Match m { get; set; }
-         
-    }
+
 
     public class DateConverter : IValueConverter
     {
@@ -319,4 +335,6 @@ namespace walsh0715cosc295a2
             throw new NotImplementedException();
         }
     }
+
+   
 }
