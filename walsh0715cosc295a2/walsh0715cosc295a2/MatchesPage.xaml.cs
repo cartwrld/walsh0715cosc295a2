@@ -9,6 +9,9 @@ using ListView = Xamarin.Forms.ListView;
 using DatePicker = Xamarin.Forms.DatePicker;
 using Picker = Xamarin.Forms.Picker;
 using System.Text.RegularExpressions;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Security;
 
 namespace walsh0715cosc295a2
 {
@@ -17,6 +20,9 @@ namespace walsh0715cosc295a2
     public partial class MatchesPage : ContentPage
     {
         public static string title = "Matches";
+
+        public static object ;
+
         public MatchesPage(Opponent opp)
         {
             // set toolbar
@@ -199,6 +205,7 @@ namespace walsh0715cosc295a2
                         Padding = new Thickness(15, 0),
                         WidthRequest=800,
                         TextColor = Color.GhostWhite,
+                        FontAttributes = FontAttributes.Bold,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
                     }
@@ -215,7 +222,7 @@ namespace walsh0715cosc295a2
             Label lblFullName = new Label { FontSize = 20 };
             Label lblDate = new Label { FontSize = 17, FontAttributes = FontAttributes.Italic };
             Label lblGameType = new Label { FontSize = 17 };
-            Label lblComments = new Label { FontSize = 15 };
+            Label lblComments = new Label { FontSize = 15, HorizontalTextAlignment = TextAlignment.End};
             Label lblWin = new Label { FontSize = 17, Text = "Win?" };
             Switch swWin = new Switch();
 
@@ -229,7 +236,7 @@ namespace walsh0715cosc295a2
             StackLayout stkWin = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 Children = { lblWin, swWin }
             };
@@ -244,6 +251,7 @@ namespace walsh0715cosc295a2
             {
                 Orientation = StackOrientation.Vertical,
                 VerticalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 WidthRequest = 150,
                 Children = { lblComments, stkWin }
             };
@@ -252,34 +260,50 @@ namespace walsh0715cosc295a2
             {
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(20,10,10,10),
+                Padding = new Thickness(20,10,20,10),
                 Children = { stkLeft, stkRight }
             };
 
             View = stkBase;
 
             MenuItem mi = new MenuItem { Text = "Delete", IsDestructive = true };
-            mi.Clicked += async (sender, e) =>
+            mi.Clicked += (sender, e) =>
             {
-                MenuItem menuItem = (MenuItem)sender;
-                Match match = (Match)menuItem.BindingContext;
+                Debug.WriteLine("after click");
+
+                var menuItem = (MenuItem)sender;
+                var match = menuItem.BindingContext;
+
+                Debug.WriteLine($"{match.Match.ToString()}");
+
+                Match m = match as Match;
 
                 if (match != null)
                 {
-                    App.AppDB.DeleteMatch(match);
+                    App.AppDB.DeleteMatch(m);
 
                     ListView lv = (ListView)this.Parent;
 
                     if (lv != null)
                     {
                         List<Match> matches = App.AppDB.GetMatches();
-                        lv.ItemsSource = new List<Match>(matches);
+                        lv.ItemsSource = new ObservableCollection<Match>(matches);
                     }
                 }
             };
 
             ContextActions.Add(mi);
         }
+    }
+    
+    public class MCTemplate
+    {
+        //private Match m;
+        //private string gn;
+        //private string fn;
+        
+        public Match m { get; set; }
+         
     }
 
     public class DateConverter : IValueConverter
