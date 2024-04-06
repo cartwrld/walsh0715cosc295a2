@@ -14,15 +14,18 @@ namespace walsh0715cosc295a2
         {
             InitializeComponent();
 
-            setToolBar();
+            // setup for the toolbar
+            SetToolbar(title);
 
             // opponent list
             List<Opponent> oppList = App.AppDB.GetOpponents();
 
+            ObservableCollection<Opponent> ocOppList = new ObservableCollection<Opponent>(oppList);
+
             // list view to hold the opponents
             ListView lvOpps = new ListView
             {
-                ItemsSource = oppList,
+                ItemsSource = ocOppList,
                 ItemTemplate = new DataTemplate(typeof(OpponentCell)),
                 RowHeight = 50
             };
@@ -59,72 +62,68 @@ namespace walsh0715cosc295a2
                 Children = { lvOpps, newBtn } 
             };
 
+            Content = stklayout;
+
+            // get message from AddNewOppPage to refresh the list after adding Opponent
             MessagingCenter.Subscribe<AddNewOppPage>(this, "DBUpdated", (sender) => {
                 UpdateListView();
             });
 
+            // get message from SettingPage to refresh the list after resetting the DB
             MessagingCenter.Subscribe<SettingsPage>(this, "DBReset", (sender) => {
                 UpdateListView();
             });
 
+            // function that refreshes the listview
             void UpdateListView()
             {
-                lvOpps.ItemsSource = App.AppDB.GetOpponents(); // Update your ListView's ItemsSource
+                List<Opponent> list = App.AppDB.GetOpponents();
+                ObservableCollection<Opponent> ocOpps = new ObservableCollection<Opponent>(list);
+                lvOpps.ItemsSource = ocOpps;
             }
-
-            Content = stklayout;
         }
 
-        public void setToolBar()
+        /**
+         * This function sets the toolbar for the Opponents page 
+         */
+        public void SetToolbar(string prev)
         {
-            Title = title;
-            ToolbarItem btnSettings = new ToolbarItem
-            {
-                Text = "Settings",
-                Order = ToolbarItemOrder.Primary,
-            };
-            ToolbarItem btnGames = new ToolbarItem
-            {
-                Text = "Games",
-                Order = ToolbarItemOrder.Primary,
-            };
+            Title = prev;
 
-            btnGames.Clicked += OnGamesClick;
-            btnSettings.Clicked += OnSettingsClick;
+            ToolbarItem btnSettings = new ToolbarItem { Text = "Settings", Order = ToolbarItemOrder.Primary };
+            ToolbarItem btnGames = new ToolbarItem { Text = "Games", Order = ToolbarItemOrder.Primary };
+
+            btnGames.Clicked += (s, e) => Navigation.PushAsync(new GamesPage(title));
+            btnSettings.Clicked += (s, e) => Navigation.PushAsync(new SettingsPage(title));
 
             ToolbarItems.Add(btnGames);
             ToolbarItems.Add(btnSettings);
         }
-        public void OnSettingsClick(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new SettingsPage());
-        }
-        public void OnGamesClick(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new GamesPage(title));
-        }
-
     }
 
+    /**
+     * This class is used to represent the Opponents on the main page of
+     * the App. An OpponentCell displays the Opponents full name, and
+     * phone number.
+     */
     public class OpponentCell : ViewCell
     {
         public OpponentCell()
         { 
-            Label lblFirst = new Label { FontSize = 20 };
-            Label lblLast = new Label { FontSize = 20 };
-
+            Label lblFirst = new Label { FontSize = 18 };
+            Label lblLast = new Label { FontSize = 18 };
             Label lblPhone = new Label { FontSize = 17, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.End, WidthRequest = 145 };
 
+            // set bindings for the fname, lname, and phone
             lblFirst.SetBinding(Label.TextProperty, "FirstName");
             lblLast.SetBinding(Label.TextProperty, "LastName");
             lblPhone.SetBinding(Label.TextProperty, "Phone");
 
+            // horizontal stack for the name
             StackLayout stkName = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-
                 WidthRequest = 200,
-                //Padding = 20,
                 Children = { lblFirst, lblLast }
             };
 
@@ -133,11 +132,10 @@ namespace walsh0715cosc295a2
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                //Spacing = 50,
-                //Padding = new Thickness(0,12,0,0),
                 Children = { stkName, lblPhone }, 
             };
 
+            // set up the delete function for the menu item
             MenuItem mi = new MenuItem { Text = "Delete", IsDestructive = true };
             mi.Clicked += async (sender, e) =>
             {
@@ -146,12 +144,17 @@ namespace walsh0715cosc295a2
 
                 if (opponent != null)
                 {
+                    // delete opponent
                     App.AppDB.DeleteOpponent(opponent);
 
-                    var lv = (ListView)this.Parent;
+                    // delete matches by opponent ID
+                    App.AppDB.DeleteMatchesByOppID(opponent.ID);
+                    
+                    ListView lv = (ListView)this.Parent;
 
                     if (lv != null)
                     {
+                        // reset the list view
                         List<Opponent> opponents = App.AppDB.GetOpponents();
                         lv.ItemsSource = new ObservableCollection<Opponent>(opponents);
                     }

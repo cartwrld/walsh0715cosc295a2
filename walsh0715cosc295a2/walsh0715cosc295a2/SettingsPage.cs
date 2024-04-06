@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace walsh0715cosc295a2
 {
@@ -11,23 +6,31 @@ namespace walsh0715cosc295a2
     {
         public static string title = "Settings";
 
-        public SettingsPage()
+        public SettingsPage(string prev)
         {
-            setToolBar();
+            // setup for the toolbar
+            SetToolbar(prev);
 
-            Label lblTitle = new Label { Text = "Reset Game Data" };
+            // label describing what happens when the button is pressed
+            Label lblTitle = new Label { Text = "Delete all existing\nOpponents/Matches/Games",FontAttributes = FontAttributes.Bold, HorizontalTextAlignment = TextAlignment.Center};
+            
+            // button to perform the reset
             Button btnReset = new Button { Text = "Reset",
                 TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
-                BackgroundColor = Color.Accent,
+                BackgroundColor = Color.Crimson,
             };
 
+            // click function to reset
             btnReset.Clicked += (sender, e) =>
             {
+                // reset the db
                 App.AppDB.ResetDB();
 
+                // send message to opponents page to refresh the list
                 MessagingCenter.Send(this, "DBReset");
 
+                // pop back to empty opponents page
                 Navigation.PopToRootAsync();
             };
 
@@ -37,35 +40,35 @@ namespace walsh0715cosc295a2
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Children = { lblTitle, btnReset }
-              
             };
 
             Content = stkBase;
         }
-        public void setToolBar()
+
+
+        /**
+         * This function sets the toolbar for the Settings page 
+         */
+        public void SetToolbar(string p)
         {
-            Title = title;
-            ToolbarItem btnSettings = new ToolbarItem
-            {
-                Text = "Settings",
+            // previous title
+            Title = p;
+            
+            ToolbarItem btnSettings = new ToolbarItem 
+            { 
+                Text = "Settings", 
                 Order = ToolbarItemOrder.Primary,
+                // disabled since we're on the settings page
                 IsEnabled = false,
             };
-            ToolbarItem btnGames = new ToolbarItem
-            {
-                Text = "Games",
-                Order = ToolbarItemOrder.Primary,
-            };
-
-            btnGames.Clicked += OnGamesClick;
-
+            ToolbarItem btnGames = new ToolbarItem { Text = "Games", Order = ToolbarItemOrder.Primary };
+            
+            // setting function for the games click
+            btnGames.Clicked += (s, e) => Navigation.PushAsync(new GamesPage(title));
+            
+            // add buttons to the toolbar
             ToolbarItems.Add(btnGames);
             ToolbarItems.Add(btnSettings);
-        }
-   
-        public void OnGamesClick(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new GamesPage(title));
         }
     }
 }

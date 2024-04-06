@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using walsh0715cosc295a2.db;
+﻿using walsh0715cosc295a2.db;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace walsh0715cosc295a2
 {
@@ -26,26 +23,11 @@ namespace walsh0715cosc295a2
         {
             InitializeComponent();
 
-            //DeleteDatabases();
             NavigationPage page = new NavigationPage(new OpponentsPage());
-            //page.BarBackgroundColor = Color.SlateGray;
 
             MainPage = page;
         }
 
-        public static void DeselectItem(ListView lv)
-        {
-            lv.ItemTapped += (sender, e) =>
-            {
-                ((ListView)sender).SelectedItem = null;
-            };
-        }
-
-
-        private void DeleteDatabases()
-        {
-            DependencyService.Get<IFileHelper>().DeleteLocalFile("AppSQLite.db3");
-        }
         protected override void OnStart()
         {
         }

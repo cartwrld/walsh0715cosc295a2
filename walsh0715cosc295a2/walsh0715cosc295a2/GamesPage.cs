@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Xamarin.Forms;
 
@@ -12,12 +10,16 @@ namespace walsh0715cosc295a2
         public static string title = "Games";
         public GamesPage(string prev)
         {
+            // get list of games
             List<Game> games = App.AppDB.GetGames();
 
-            setToolBar(prev);
+            // setup the toolbar
+            SetToolBar(prev);
 
+            // get listview of games
             ListView lvGames = new ListView
             {
+                // create list of games with a match count for each game
                 ItemsSource = games.Select(game => new
                 {
                     Game = game,
@@ -27,6 +29,7 @@ namespace walsh0715cosc295a2
                 RowHeight = GameCell.RowHeight,
             };
 
+            // remove highlighting when tapped
             lvGames.ItemTapped += (sender, e) =>
             {
                 ((ListView)sender).SelectedItem = null;
@@ -40,33 +43,40 @@ namespace walsh0715cosc295a2
 
             Content = stkLayout;
         }
-        public void setToolBar(string p)
+
+        /**
+        * This function sets the toolbar for the Games page 
+        */
+        public void SetToolBar(string p)
         {
+            // previous title
             Title = p;
-            ToolbarItem btnSettings = new ToolbarItem
-            {
-                Text = "Settings",
-                Order = ToolbarItemOrder.Primary,
-            };
-            ToolbarItem btnGames = new ToolbarItem
-            {
+
+            ToolbarItem btnSettings = new ToolbarItem { Text = "Settings", Order = ToolbarItemOrder.Primary, };
+            ToolbarItem btnGames = new ToolbarItem 
+            { 
                 Text = "Games",
                 Order = ToolbarItemOrder.Primary,
-                IsEnabled = false,
+                // disabled since we're on the games page
+                IsEnabled = false, 
             };
 
-            btnSettings.Clicked += OnSettingsClick;
+            // setting function for the settings click
+            btnSettings.Clicked += (s,e) => Navigation.PushAsync(new SettingsPage(title));
 
+            // add buttons to the toolbar
             ToolbarItems.Add(btnGames);
             ToolbarItems.Add(btnSettings);
         }
-        public void OnSettingsClick(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new SettingsPage());
-        }
+       
 
     }
 
+    /**
+    * This class is used to represent the Games on the Games page of
+    * the App. An GameCell displays the GameName, Description, Rating, 
+    * and number of Matches that contain that Game.
+    */
     public class GameCell : ViewCell
     {
         public static int RowHeight = 130;
@@ -79,6 +89,7 @@ namespace walsh0715cosc295a2
             Label lblMatchCount = new Label { FontSize = 16 };
             Label lblRating = new Label {  FontSize = 26, VerticalTextAlignment = TextAlignment.Center,HorizontalTextAlignment = TextAlignment.Center};
 
+            // set bindings to the game list
             lblGameName.SetBinding(Label.TextProperty, "Game.GameName");
             lblDescription.SetBinding(Label.TextProperty, "Game.Description");
             lblMatchCount.SetBinding(Label.TextProperty, "MatchCount");
@@ -90,6 +101,7 @@ namespace walsh0715cosc295a2
                 Children = { lblMatches, lblMatchCount }
             };
 
+            // stack for the left items
             StackLayout stkLeft = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
@@ -98,6 +110,8 @@ namespace walsh0715cosc295a2
                 WidthRequest = 290,
                 Children = { lblGameName, lblDescription, stkMatches }
             };
+
+            // stack for the right item
             StackLayout stkRight = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
@@ -105,9 +119,9 @@ namespace walsh0715cosc295a2
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 60,
                 Children = { lblRating }
-
             };
 
+            // left and right together now
             StackLayout stkBase = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
